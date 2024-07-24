@@ -1,9 +1,10 @@
-export const fetchCommits = async () => {
+import axios from "axios";
+
+export const fetchCommitsFromGithub = async () => {
     try {
-        const response = await fetch('/api/commits');
-        const data = await response.json();
-        return data;
-    } catch (err) {
+        const response = await axios.get('/api/commits');
+        return response.data;
+    } catch (err) {        
         throw new Error ('Failed to fetch commits');
     }
 };
