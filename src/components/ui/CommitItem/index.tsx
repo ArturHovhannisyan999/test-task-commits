@@ -1,11 +1,7 @@
 import React from 'react';
 import { formatDistanceToNow, parseISO } from 'date-fns';
-import { formatDate } from '../lib/formatDate';
-import { Commit } from '@/types';
-
-type CommitItemProps = {
-    commit: Commit;
-};
+import { formatDate } from './lib/formatDate';
+import { CommitItemProps } from '@/types';
 
 export const CommitItem: React.FC<CommitItemProps> = ({ commit }) => {
   return (

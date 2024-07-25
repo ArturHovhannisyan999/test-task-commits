@@ -7,7 +7,6 @@ export interface Commit {
         date: string;
       };
     };
-    html_url: string;
 }
 
 export interface CommitsStore {
@@ -15,4 +14,17 @@ export interface CommitsStore {
     error: string | null;
     loading: boolean;
     fetchCommits: () => Promise<void>;
+}
+
+export type CommitItemProps = {
+  commit: Commit;
+};
+
+export type CommitButtonProps = {
+  handleRefreshCommits: () => void;
+}
+
+export type CommitInputProps = {
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
 }
