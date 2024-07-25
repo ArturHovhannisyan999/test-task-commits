@@ -7,6 +7,7 @@ import { Commit } from '@/types';
 import { handleRefresh } from './lib/handleRefresh';
 import { CommitButton } from '@/components/shared/CommitButton';
 import { CommitInput } from '@/components/shared/CommitInput';
+import { Spinner } from '@/components/shared/Spinner';
 
 const CommitList = () => {
   const { commits, error, loading, fetchCommits } = useCommitsStore();
@@ -33,12 +34,12 @@ const CommitList = () => {
     setFilteredCommits(filtered);
   }, [searchTerm, commits]);
 
-  const handleRefreshCommits = useCallback(() => {
-    handleRefresh(fetchCommits, setRefreshing)
+  const handleRefreshCommits = useCallback(async () => {
+    await handleRefresh(fetchCommits, setRefreshing);
   }, [fetchCommits]);
 
   if (loading) {
-    return <div className="container mx-auto p-4 text-center">Loading...</div>;
+    return <div className="container mx-auto p-4 text-center"><Spinner /></div>;
   }
 
   if (error) {

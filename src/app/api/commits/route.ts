@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
           headers: {
               Authorization: `token ${process.env.GITHUB_TOKEN}`,
             },
-        }
+      }
     );
 
     const data = response.data;  
